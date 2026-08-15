@@ -6,6 +6,19 @@ to follow [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [0.6.0] - 2026-08-15
+
+### Changed
+
+- Reduced post-game summary overhead by selecting final timeline samples in one
+  pass instead of sorting copied series.
+- Corrected the contributor documentation for the Electron window layout and
+  build-order registration.
+
+### Security
+
+- Updated transitive archive and IP-address parsers to patched releases.
+
 ## [0.5.0] - 2026-07-14
 
 ### Added
@@ -167,7 +180,8 @@ to follow [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - Initial release: pre-game scouting, in-game overlay, post-game review, and
   civ/guide/tier-list data, powered by local AoE4 files and public APIs.
 
-[Unreleased]: https://github.com/alesxxxx/AOE4-Analytics/compare/v0.5.0...HEAD
+[Unreleased]: https://github.com/alesxxxx/AOE4-Analytics/compare/v0.6.0...HEAD
+[0.6.0]: https://github.com/alesxxxx/AOE4-Analytics/compare/v0.5.0...v0.6.0
 [0.5.0]: https://github.com/alesxxxx/AOE4-Analytics/compare/v0.4.1...v0.5.0
 [0.4.1]: https://github.com/alesxxxx/AOE4-Analytics/compare/v0.4.0...v0.4.1
 [0.4.0]: https://github.com/alesxxxx/AOE4-Analytics/compare/v0.3.0...v0.4.0

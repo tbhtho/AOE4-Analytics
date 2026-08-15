@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { finiteMetricValue, selectTrainerPlayer } from '../gameSummaryHelpers'
+import { finiteMetricValue, latestByTime, selectTrainerPlayer } from '../gameSummaryHelpers'
 
 describe('finiteMetricValue', () => {
   it('keeps real finite numbers, including zero', () => {
@@ -12,6 +12,25 @@ describe('finiteMetricValue', () => {
     expect(finiteMetricValue(undefined)).toBeNull()
     expect(finiteMetricValue(Number.NaN)).toBeNull()
     expect(finiteMetricValue(Number.POSITIVE_INFINITY)).toBeNull()
+  })
+})
+
+describe('latestByTime', () => {
+  it('finds the latest point without reordering the source', () => {
+    const points = [{ timeSec: 20 }, { timeSec: 5 }, { timeSec: 10 }]
+
+    expect(latestByTime(points)).toBe(points[0])
+    expect(points.map((point) => point.timeSec)).toEqual([20, 5, 10])
+  })
+
+  it('returns the last point when timestamps tie and null for an empty series', () => {
+    const points = [
+      { timeSec: 10, value: 'first' },
+      { timeSec: 10, value: 'last' },
+    ]
+
+    expect(latestByTime(points)).toBe(points[1])
+    expect(latestByTime([])).toBeNull()
   })
 })
 

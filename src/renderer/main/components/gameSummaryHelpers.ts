@@ -5,6 +5,15 @@ export function finiteMetricValue(value: number | string | null | undefined): nu
   return typeof value === 'number' && Number.isFinite(value) ? value : null
 }
 
+/** Return the last point at the greatest timestamp without copying or sorting the input. */
+export function latestByTime<T extends { timeSec: number }>(points: readonly T[]): T | null {
+  let latest: T | null = null
+  for (const point of points) {
+    if (latest == null || point.timeSec >= latest.timeSec) latest = point
+  }
+  return latest
+}
+
 type TrainerPlayer = {
   profileId: number | null
   civToken: string | null

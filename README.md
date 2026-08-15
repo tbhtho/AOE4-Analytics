@@ -115,7 +115,7 @@ RTSLytics is read-only and keeps your game data on your machine.
 
 ## Architecture
 
-RTSLytics is an Electron app with three windows across two processes: a Node **main** process (`electron/`) that owns all IO and the API clients, a typed **preload** bridge (`electron/ipc/contract.ts`), and two React **renderers** — the dashboard (`src/renderer/main/`) and the transparent overlay (`src/renderer/overlay/`). The real logic lives in a pure, Vitest-tested domain layer (`src/domain/`); the renderer only talks to the main process through IPC. See [CONTRIBUTING.md](CONTRIBUTING.md) for the full map.
+RTSLytics has one Electron **main** process (`electron/`) that owns all IO and the API clients, a typed **preload** bridge (`electron/ipc/contract.ts`), and two React renderer windows — the dashboard (`src/renderer/main/`) and the transparent overlay (`src/renderer/overlay/`). The real logic lives in a pure, Vitest-tested domain layer (`src/domain/`); renderers only talk to the main process through IPC. See [CONTRIBUTING.md](CONTRIBUTING.md) for the full map.
 
 ## Contributing
 

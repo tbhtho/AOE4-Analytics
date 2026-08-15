@@ -41,7 +41,7 @@ import {
 import { formatDurationShort } from '@shared/format'
 import { cn } from '@shared/lib/utils'
 import { Card, CardContent } from '@shared/components/ui/card'
-import { finiteMetricValue } from './gameSummaryHelpers'
+import { finiteMetricValue, latestByTime } from './gameSummaryHelpers'
 
 const GRID = 'hsl(var(--border))'
 const MUTED = 'hsl(var(--muted-foreground))'
@@ -987,12 +987,12 @@ function isMe(p: PlayerSummary, myProfileId: number | null, myCiv: string | null
 /** Exact end-game totals from the header; last timeline sample only as fallback. */
 function finalResources(p: PlayerSummary): ResourceAmounts | null {
   if (p.totals && totalResources(p.totals.resourcesGathered) > 0) return p.totals.resourcesGathered
-  const last = [...p.resources].sort((a, b) => a.timeSec - b.timeSec).at(-1)
+  const last = latestByTime(p.resources)
   return last?.gathered ?? null
 }
 
 function finalScore(p: PlayerSummary): ScorePoint | null {
-  return [...p.scores].sort((a, b) => a.timeSec - b.timeSec).at(-1) ?? null
+  return latestByTime(p.scores)
 }
 
 function totalResources(r: ResourceAmounts): number {

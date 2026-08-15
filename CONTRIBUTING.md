@@ -59,17 +59,17 @@ features need the real game running and can't be covered by unit tests alone.
 
 ## How the project is laid out
 
-RTSLytics is an Electron app with **three windows across two processes**:
+RTSLytics has **one Electron main process and two renderer windows**:
 
-| Layer | Where | What it does |
-| --- | --- | --- |
-| **Main** (Node) | `electron/` | All IO: file reads, the AoE4World + Relic API clients, polling, the overlay controller, native input hook. |
-| **Preload** | `electron/ipc/contract.ts`, `electron/preload.ts` | The typed bridge. `contract.ts` is the **single source of truth** for IPC; it exposes `window.rtslytics`. |
-| **Renderer — main app** | `src/renderer/main/` | The dashboard UI (React). Talks to main **only** through IPC. |
-| **Renderer — overlay** | `src/renderer/overlay/` | The transparent, click-through in-game overlay. |
-| **Domain** (pure) | `src/domain/` | The real logic — parsers, analysis, counters, scouting. Pure and Vitest-tested; no IO. |
-| **Store** | `src/store/` | Settings (JSON) and analyzed-match history (SQLite, JSON fallback). |
-| **Data** | `src/data/` | Bundled build orders + vendored AoE4World data/flags (see NOTICE). |
+| Layer                   | Where                                             | What it does                                                                                               |
+| ----------------------- | ------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
+| **Main** (Node)         | `electron/`                                       | All IO: file reads, the AoE4World + Relic API clients, polling, the overlay controller, native input hook. |
+| **Preload**             | `electron/ipc/contract.ts`, `electron/preload.ts` | The typed bridge. `contract.ts` is the **single source of truth** for IPC; it exposes `window.rtslytics`.  |
+| **Renderer — main app** | `src/renderer/main/`                              | The dashboard UI (React). Talks to main **only** through IPC.                                              |
+| **Renderer — overlay**  | `src/renderer/overlay/`                           | The transparent, click-through in-game overlay.                                                            |
+| **Domain** (pure)       | `src/domain/`                                     | The real logic — parsers, analysis, counters, scouting. Pure and Vitest-tested; no IO.                     |
+| **Store**               | `src/store/`                                      | Settings (JSON) and analyzed-match history (SQLite, JSON fallback).                                        |
+| **Data**                | `src/data/`                                       | Bundled build orders + vendored AoE4World data/flags (see NOTICE).                                         |
 
 Rules of thumb:
 
@@ -82,7 +82,9 @@ Rules of thumb:
 ## Contributing data (no code required)
 
 - **Build orders** live in `src/data/buildOrders/` as JSON (CraftySalamander /
-  aoe4guides-compatible format). Add a file and it's picked up.
+  aoe4guides-compatible format). Import and register each file in
+  `src/data/buildOrders/index.ts`; list order determines the default build for a
+  civilization.
 - **Guides** live in `src/data/guides.ts`.
 
 ## Platform notes
