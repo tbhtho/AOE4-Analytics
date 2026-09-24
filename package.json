@@ -1,17 +1,17 @@
 {
   "name": "rtslytics",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "description": "An Age of Empires IV companion + performance-analytics desktop app for beginner players.",
   "author": "RTSLytics",
   "license": "MIT",
   "private": true,
-  "homepage": "https://github.com/alesxxxx/AOE4-Analytics",
+  "homepage": "https://github.com/m4rc3lsowhat/AOE4-Analytics",
   "repository": {
     "type": "git",
-    "url": "https://github.com/alesxxxx/AOE4-Analytics.git"
+    "url": "https://github.com/m4rc3lsowhat/AOE4-Analytics.git"
   },
   "bugs": {
-    "url": "https://github.com/alesxxxx/AOE4-Analytics/issues"
+    "url": "https://github.com/m4rc3lsowhat/AOE4-Analytics/issues"
   },
   "main": "out/main/index.js",
   "engines": {
@@ -43,7 +43,7 @@
     "uiohook-napi": "^1.5.5"
   },
   "overrides": {
-    "adm-zip": "0.6.0",
+    "adm-zip": "0.6.1",
     "ip-address": "10.5.0",
     "steam-appticket": "2.0.1"
   },

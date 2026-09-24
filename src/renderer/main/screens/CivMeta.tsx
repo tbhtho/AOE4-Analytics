@@ -7,11 +7,9 @@ import {
   ChevronRight,
   History,
   Info,
-  ListOrdered,
   Map as MapIcon,
   ShieldHalf,
   Swords,
-  Table2,
 } from 'lucide-react'
 import type { RankLevel, StatsLeaderboard } from '@api/types'
 import type { CivTier, Tier } from '@domain/tierList'
@@ -59,10 +57,10 @@ const BRACKETS: { label: string; value: RankLevel | undefined }[] = [
 ]
 
 const TABS = [
-  { key: 'tier', label: 'Tier list', icon: ListOrdered },
-  { key: 'stats', label: 'Civ stats', icon: Table2 },
-  { key: 'matchups', label: 'Matchups', icon: Swords },
-  { key: 'maps', label: 'Maps', icon: MapIcon },
+  { key: 'tier', label: 'Tier list' },
+  { key: 'stats', label: 'Civ stats' },
+  { key: 'matchups', label: 'Matchups' },
+  { key: 'maps', label: 'Maps' },
 ] as const
 type TabKey = (typeof TABS)[number]['key']
 
@@ -173,7 +171,6 @@ export function CivMeta() {
                   : 'text-muted-foreground hover:bg-secondary/60 hover:text-foreground',
               )}
             >
-              <t.icon className="h-3.5 w-3.5" />
               {t.label}
             </button>
           ))}

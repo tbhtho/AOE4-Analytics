@@ -1,6 +1,6 @@
 # RTSLytics
 
-[![CI](https://github.com/alesxxxx/AOE4-Analytics/actions/workflows/ci.yml/badge.svg)](https://github.com/alesxxxx/AOE4-Analytics/actions/workflows/ci.yml)
+[![CI](https://github.com/m4rc3lsowhat/AOE4-Analytics/actions/workflows/ci.yml/badge.svg)](https://github.com/m4rc3lsowhat/AOE4-Analytics/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 ![Platform: Windows](https://img.shields.io/badge/platform-Windows-blue.svg)
 
@@ -20,8 +20,10 @@ RTSLytics is read-only. It uses public APIs and your own local AoE4 files.
 - Benchmark Lens: compare recent stretches and filtered personal samples with the sample size shown for every metric.
 - Matchup Lab: global directional matchup data and personal local results, kept separate with honest sample counts.
 - Data Studio: filter local history by civ, opponent, map, format, patch or season, result, duration, and time window; filtered views can be bookmarked.
-- Guides and data: civ pages, tier lists, counters, build orders, landmarks, and matchup stats.
+- Guides and data: civ pages, tier lists, counters, build orders, landmarks, and matchup stats. Written guides are marked work in progress while they are updated.
 - Local support: ranked, Quick Match, custom games, and vs-AI where local files provide the data.
+
+Many bundled build orders are adapted from community submissions on [AoE4Guides](https://aoe4guides.com/). Sourced builds credit their original authors and link back to the source in the app.
 
 ## Screenshots
 
@@ -40,7 +42,8 @@ RTSLytics is read-only. It uses public APIs and your own local AoE4 files.
     <td width="50%"><img src="docs/screenshots/civ-meta.png" width="100%" alt="Civ Meta"><br><sub><b>Civ Meta</b> — live tier list and win rates</sub></td>
   </tr>
   <tr>
-    <td colspan="2" align="center"><img src="docs/screenshots/guides.png" width="50%" alt="Guides"><br><sub><b>Guides</b> — build orders, counter helper, civ quiz</sub></td>
+    <td width="50%"><img src="docs/screenshots/guides.png" width="100%" alt="Guides"><br><sub><b>Guides</b> — community build orders and counter helper</sub></td>
+    <td width="50%"><img src="docs/screenshots/data-studio.png" width="100%" alt="Data Studio"><br><sub><b>Data Studio</b> — filter your own match history</sub></td>
   </tr>
 </table>
 
@@ -48,7 +51,7 @@ RTSLytics is read-only. It uses public APIs and your own local AoE4 files.
 
 Use the latest portable Windows release:
 
-https://github.com/alesxxxx/AOE4-Analytics/releases/latest
+https://github.com/m4rc3lsowhat/AOE4-Analytics/releases/latest
 
 Download `RTSLytics-*-portable.exe` and run it. No installer is required.
 

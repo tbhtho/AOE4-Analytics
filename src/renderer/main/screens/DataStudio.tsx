@@ -1,6 +1,6 @@
 import { useMemo, useState, type ReactNode } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
-import { Database, RotateCcw } from 'lucide-react'
+import { RotateCcw } from 'lucide-react'
 import {
   aggregateDataStudioGames,
   DATA_STUDIO_LEGACY_UNKNOWN,
@@ -195,7 +195,6 @@ function FilterPanel({
     <Card>
       <CardContent className="space-y-3 p-4">
         <div className="flex items-center gap-2">
-          <Database className="h-4 w-4 text-primary" />
           <h2 className="text-sm font-semibold">Saved-view filters</h2>
           <span className="text-[11px] text-muted-foreground">
             The current view is stored in the page address.

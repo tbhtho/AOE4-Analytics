@@ -1,4 +1,4 @@
-import { Gamepad2, Radio, Play, Swords, Loader2, Users } from 'lucide-react'
+import { Radio, Play, Swords, Loader2, Users } from 'lucide-react'
 import { civDisplayName } from '@domain/civ'
 import { buildAdvisoryTeamPlan } from '@domain/teamInsights'
 import { formatRankLevel, formatRating, rankColor } from '@shared/format'
@@ -133,10 +133,7 @@ export function LiveMatchCard() {
       : "Couldn't launch the game — is it installed?"
   return (
     <div className="flex flex-wrap items-center justify-between gap-3 rounded-lg border border-border bg-card/50 p-4">
-      <div className="flex items-center gap-2 text-sm text-muted-foreground">
-        <Gamepad2 className="h-4 w-4" />
-        Age of Empires IV is not running.
-      </div>
+      <p className="text-sm text-muted-foreground">Age of Empires IV is not running.</p>
       <button
         type="button"
         onClick={() => launch.mutate()}

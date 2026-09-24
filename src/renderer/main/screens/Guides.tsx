@@ -1,32 +1,29 @@
 import { useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
-import { BookOpen, ListOrdered, Shield, Sparkles, ArrowLeft, Clock, Search } from 'lucide-react'
-import { GUIDES, type Guide } from '@data/guides'
+import { Search } from 'lucide-react'
+import { GUIDES } from '@data/guides'
 import { BUNDLED_BUILD_ORDERS } from '@data/buildOrders'
 import type { BuildOrder } from '@domain/buildOrderSchema'
 import { buildOrderCivLabel } from '@domain/buildOrderSchema'
-import { Markdown } from '@shared/components/Markdown'
 import { Card, CardContent } from '@shared/components/ui/card'
 import { Badge } from '@shared/components/ui/badge'
 import { PageHead } from '../components/PageHead'
 import { BuildOrderViewer } from '../components/BuildOrderViewer'
 import { CounterHelper } from '../components/tools/CounterHelper'
-import { CivQuiz } from '../components/tools/CivQuiz'
 
-type Tab = 'guides' | 'builds' | 'counters' | 'quiz'
+type Tab = 'guides' | 'builds' | 'counters'
 
 const TABS = [
-  { id: 'guides', label: 'Guides', icon: BookOpen },
-  { id: 'builds', label: 'Build Orders', icon: ListOrdered },
-  { id: 'counters', label: 'Counter Helper', icon: Shield },
-  { id: 'quiz', label: 'Civ Quiz', icon: Sparkles },
+  { id: 'builds', label: 'Build Orders' },
+  { id: 'counters', label: 'Counter Helper' },
+  { id: 'guides', label: 'Guides (WIP)' },
 ] as const
 
 export function Guides() {
   // Tab lives in the URL so a refresh or deep link restores it.
   const [searchParams, setSearchParams] = useSearchParams()
   const tabParam = searchParams.get('tab')
-  const tab: Tab = TABS.some((t) => t.id === tabParam) ? (tabParam as Tab) : 'guides'
+  const tab: Tab = TABS.some((t) => t.id === tabParam) ? (tabParam as Tab) : 'builds'
   const setTab = (id: Tab) =>
     setSearchParams(
       (prev) => {
@@ -42,106 +39,71 @@ export function Guides() {
       <PageHead
         kicker="Library"
         title="Guides & Tools"
-        sub="Beginner tactics, build orders, a counter helper, and a civ-picker quiz."
+        sub="Build orders and a counter helper for Age of Empires IV. Written guides are being revised."
       />
 
+      <p className="rounded-md border border-primary/30 bg-primary/5 px-4 py-3 text-sm leading-relaxed">
+        <span className="font-semibold text-primary">Community build credit:</span> many of the
+        bundled build orders come from{' '}
+        <a
+          href="https://aoe4guides.com/"
+          target="_blank"
+          rel="noreferrer"
+          className="font-semibold text-primary underline-offset-2 hover:underline"
+        >
+          AoE4Guides
+        </a>
+        . Original authors and source links appear with sourced builds.
+      </p>
+
       <div className="flex gap-1 border-b border-border" role="tablist">
-        {TABS.map((t) => {
-          const Icon = t.icon
-          return (
-            <button
-              key={t.id}
-              type="button"
-              role="tab"
-              aria-selected={tab === t.id}
-              onClick={() => setTab(t.id)}
-              className={`-mb-px flex items-center gap-1.5 border-b-2 px-3 py-2 text-sm transition-colors ${
-                tab === t.id
-                  ? 'border-primary text-primary'
-                  : 'border-transparent text-muted-foreground hover:text-foreground'
-              }`}
-            >
-              <Icon className="h-4 w-4" />
-              {t.label}
-            </button>
-          )
-        })}
+        {TABS.map((t) => (
+          <button
+            key={t.id}
+            type="button"
+            role="tab"
+            aria-selected={tab === t.id}
+            onClick={() => setTab(t.id)}
+            className={`-mb-px flex items-center gap-1.5 border-b-2 px-3 py-2 text-sm transition-colors ${
+              tab === t.id
+                ? 'border-primary text-primary'
+                : 'border-transparent text-muted-foreground hover:text-foreground'
+            }`}
+          >
+            {t.label}
+          </button>
+        ))}
       </div>
 
       <div role="tabpanel">
         {tab === 'guides' && <GuideLibrary />}
         {tab === 'builds' && <BuildLibrary />}
         {tab === 'counters' && <CounterHelper />}
-        {tab === 'quiz' && <CivQuiz />}
       </div>
     </div>
   )
 }
 
 function GuideLibrary() {
-  // The open guide lives in the URL (`?guide=slug`) so it survives a refresh.
-  const [searchParams, setSearchParams] = useSearchParams()
-  const guideSlug = searchParams.get('guide')
-  const active = guideSlug != null ? (GUIDES.find((g) => g.slug === guideSlug) ?? null) : null
-  const setActive = (g: Guide | null) =>
-    setSearchParams(
-      (prev) => {
-        const next = new URLSearchParams(prev)
-        if (g) next.set('guide', g.slug)
-        else next.delete('guide')
-        return next
-      },
-      { replace: true },
-    )
-
-  if (active) {
-    return (
-      <div className="space-y-4">
-        <button
-          type="button"
-          onClick={() => setActive(null)}
-          className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground"
-        >
-          <ArrowLeft className="h-4 w-4" /> All guides
-        </button>
-        <div>
-          <h2 className="text-xl font-semibold tracking-tight">{active.title}</h2>
-          <div className="mt-1 flex items-center gap-2 text-xs text-muted-foreground">
-            <Badge variant="secondary">{active.category}</Badge>
-            <span className="flex items-center gap-1">
-              <Clock className="h-3 w-3" />
-              {active.readMinutes} min
-            </span>
-          </div>
-        </div>
-        <Card>
-          <CardContent className="p-5">
-            <Markdown content={active.body} />
-          </CardContent>
-        </Card>
-      </div>
-    )
-  }
-
   return (
-    <div className="grid gap-3 sm:grid-cols-2">
-      {GUIDES.map((g) => (
-        <button key={g.slug} type="button" onClick={() => setActive(g)} className="text-left">
-          <Card className="h-full transition-colors hover:border-primary/40">
+    <div className="space-y-4">
+      <p className="text-sm text-muted-foreground">
+        These written guides are being reviewed and updated. Build Orders and Counter Helper remain
+        available in the tabs above.
+      </p>
+      <div className="grid gap-3 sm:grid-cols-2">
+        {GUIDES.map((g) => (
+          <Card key={g.slug} className="border-border/60 bg-card/40 opacity-50">
             <CardContent className="space-y-1.5 p-4">
               <div className="flex items-center justify-between gap-2">
                 <h3 className="font-semibold">{g.title}</h3>
-                <Badge variant="secondary">{g.category}</Badge>
+                <Badge variant="secondary">WIP</Badge>
               </div>
               <p className="text-sm leading-relaxed text-muted-foreground">{g.summary}</p>
-              <div className="flex items-center gap-1 text-xs text-muted-foreground">
-                <Clock className="h-3 w-3" />
-                {g.readMinutes} min read
-              </div>
             </CardContent>
           </Card>
-        </button>
-      ))}
+        ))}
+      </div>
     </div>
   )
 }

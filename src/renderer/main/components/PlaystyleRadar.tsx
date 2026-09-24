@@ -1,5 +1,4 @@
 import { PolarAngleAxis, PolarGrid, Radar, RadarChart, ResponsiveContainer } from 'recharts'
-import { Sparkles } from 'lucide-react'
 import type { PlaystyleProfile } from '@domain/playstyle'
 import { cn } from '@shared/lib/utils'
 
@@ -31,10 +30,7 @@ export function PlaystyleRadar({
 
   return (
     <section className="rts-menu-card space-y-3 rounded-md border p-4">
-      <h3 className="flex items-center gap-1.5 text-sm">
-        <Sparkles className="h-4 w-4 text-primary" />
-        Your playstyle
-      </h3>
+      <h3 className="text-sm">Your playstyle</h3>
 
       <div className="grid items-center gap-4 md:grid-cols-2">
         <div className="h-56 w-full overflow-hidden">
@@ -112,8 +108,8 @@ export function PlaystyleRadar({
         <div className="space-y-1 border-t border-border/60 pt-2 text-[11px] text-muted-foreground">
           {localGated.length > 0 && (
             <p>
-              {join(localGated)} come from your local game stats (villager/resource economy and
-              APM) — they appear once the app has recorded a finished game&apos;s stats.
+              {join(localGated)} come from your local game stats (villager/resource economy and APM)
+              — they appear once the app has recorded a finished game&apos;s stats.
             </p>
           )}
           {sampleGated.length > 0 && <p>{join(sampleGated)} need at least 3 analysed games.</p>}

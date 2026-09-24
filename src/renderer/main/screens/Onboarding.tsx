@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Loader2, Gamepad2, ChevronRight } from 'lucide-react'
+import { Loader2, ChevronRight } from 'lucide-react'
 import { ipc } from '@shared/ipc'
 import type { SteamAccount } from '@domain/steamAccounts'
 import type { PlayerSearchHit } from '@ipc/contract'
@@ -84,7 +84,8 @@ function SteamConnect({ onResolved }: { onResolved: (hit: PlayerSearchHit) => vo
     try {
       const res = await ipc.searchPlayers(acc.steamId)
       if (res.ok && res.data.length > 0) onResolved(res.data[0]!)
-      else setError(`No AoE4World profile for ${acc.personaName ?? acc.accountName ?? acc.steamId}.`)
+      else
+        setError(`No AoE4World profile for ${acc.personaName ?? acc.accountName ?? acc.steamId}.`)
     } catch {
       setError('Profile lookup failed. Try again, or search by name above.')
     } finally {
@@ -101,11 +102,7 @@ function SteamConnect({ onResolved }: { onResolved: (hit: PlayerSearchHit) => vo
           disabled={loading}
           className="inline-flex w-full items-center justify-center gap-2 rounded-md border border-primary/30 bg-black/20 px-3 py-2 text-sm font-semibold transition-colors hover:bg-secondary/80 disabled:opacity-60"
         >
-          {loading ? (
-            <Loader2 className="h-4 w-4 animate-spin" />
-          ) : (
-            <Gamepad2 className="h-4 w-4" />
-          )}
+          {loading && <Loader2 className="h-4 w-4 animate-spin" />}
           Connect with Steam
         </button>
         {error && <p className="text-center text-xs text-muted-foreground">{error}</p>}
@@ -128,7 +125,6 @@ function SteamConnect({ onResolved }: { onResolved: (hit: PlayerSearchHit) => vo
             className="flex w-full items-center justify-between gap-2 border-b border-primary/15 px-3 py-2 text-left text-sm transition-colors last:border-b-0 hover:bg-secondary/80 disabled:opacity-60"
           >
             <span className="flex items-center gap-2 truncate">
-              <Gamepad2 className="h-3.5 w-3.5 shrink-0 text-muted-foreground" />
               <span className="truncate font-medium">
                 {acc.personaName ?? acc.accountName ?? acc.steamId}
               </span>

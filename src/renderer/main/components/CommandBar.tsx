@@ -1,6 +1,6 @@
 import { useEffect, useState, type ReactNode } from 'react'
 import { NavLink } from 'react-router-dom'
-import { Copy, Info, Landmark, Minus, Settings as SettingsIcon, Square, X } from 'lucide-react'
+import { Copy, Info, Minus, Settings as SettingsIcon, Square, X } from 'lucide-react'
 import { ipc } from '@shared/ipc'
 import { cn } from '@shared/lib/utils'
 import { navItems } from '../nav'
@@ -30,8 +30,7 @@ export function CommandBar() {
   return (
     <header className="drag-region relative z-40 flex h-12 shrink-0 select-none items-stretch border-b border-border bg-card/95">
       {/* Brand — the only place the name appears. */}
-      <div className="flex items-center gap-2.5 pl-4 pr-6">
-        <Landmark className="h-4 w-4 text-primary" />
+      <div className="flex items-center pl-4 pr-6">
         <span className="whitespace-nowrap font-display text-[13px] font-bold tracking-[0.18em] text-foreground">
           RTSLytics
         </span>
@@ -114,7 +113,9 @@ function IconNav({ to, title, children }: { to: string; title: string; children:
       className={({ isActive }) =>
         cn(
           'flex h-8 w-8 items-center justify-center rounded-sm transition-colors',
-          isActive ? 'text-primary' : 'text-muted-foreground hover:bg-secondary hover:text-foreground',
+          isActive
+            ? 'text-primary'
+            : 'text-muted-foreground hover:bg-secondary hover:text-foreground',
         )
       }
     >

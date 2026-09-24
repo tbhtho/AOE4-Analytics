@@ -6,6 +6,18 @@ to follow [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [0.6.1] - 2026-09-24
+
+### Changed
+
+- Simplified decorative icons in the desktop interface and removed the Civ Quiz.
+- Marked written guides as work in progress while retaining build orders and the counter helper.
+- Made AoE4Guides community build attribution prominent on the Guides page.
+
+### Security
+
+- Updated the pinned `adm-zip` transitive dependency to 0.6.1.
+
 ## [0.6.0] - 2026-08-15
 
 ### Changed

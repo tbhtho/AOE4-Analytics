@@ -4,7 +4,6 @@ import {
   Monitor,
   Gauge,
   Keyboard,
-  Gamepad2,
   Loader2,
   Check,
   Palette,
@@ -760,10 +759,7 @@ function SteamIdentityCard({
   return (
     <Card>
       <CardContent className="space-y-3 p-5">
-        <h2 className="flex items-center gap-2 text-base font-semibold">
-          <Gamepad2 className="h-4 w-4 text-primary" />
-          Steam account
-        </h2>
+        <h2 className="flex items-center gap-2 text-base font-semibold">Steam account</h2>
         <p className="text-xs text-muted-foreground">
           Identifies which player is <span className="font-medium text-foreground">you</span> in
           custom / AI games, so the overlay shows the right side. We match your AoE4 profile to a
@@ -798,7 +794,6 @@ function SteamIdentityCard({
                   className="flex w-full items-center justify-between gap-2 border-b border-border px-3 py-2 text-left transition-colors last:border-b-0 hover:bg-secondary"
                 >
                   <span className="flex min-w-0 items-center gap-2">
-                    <Gamepad2 className="h-3.5 w-3.5 shrink-0 text-muted-foreground" />
                     <span className="min-w-0">
                       <span className="block truncate text-sm font-medium">
                         {acc.personaName ?? acc.accountName ?? acc.steamId}

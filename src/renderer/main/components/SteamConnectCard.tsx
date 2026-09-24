@@ -1,6 +1,6 @@
 import { useEffect, useState, type FormEvent } from 'react'
 import QRCode from 'qrcode'
-import { AlertTriangle, CheckCircle2, Gamepad2, KeyRound, Loader2 } from 'lucide-react'
+import { AlertTriangle, CheckCircle2, KeyRound, Loader2 } from 'lucide-react'
 import type { SteamGuardAction } from '@ipc/contract'
 import { ipc } from '@shared/ipc'
 import { Card, CardContent } from '@shared/components/ui/card'
@@ -117,7 +117,6 @@ export function SteamConnectCard() {
     <Card>
       <CardContent className="space-y-3 p-4">
         <div className="flex items-center gap-2">
-          <Gamepad2 className="h-4 w-4 text-primary" />
           <h3 className="text-sm font-semibold">Steam connection (ranked economy)</h3>
           {connected && (
             <span className="ml-auto inline-flex items-center gap-1 text-xs text-win">
@@ -128,9 +127,9 @@ export function SteamConnectCard() {
         </div>
 
         <p className="text-xs text-muted-foreground">
-          Ranked build-order and economy come from Relic, which needs a one-time Steam sign-in.
-          Use QR approval, or sign in with your Steam password plus whatever Steam Guard email/app
-          code Steam asks for. The saved login token is encrypted on this PC only.
+          Ranked build-order and economy come from Relic, which needs a one-time Steam sign-in. Use
+          QR approval, or sign in with your Steam password plus whatever Steam Guard email/app code
+          Steam asks for. The saved login token is encrypted on this PC only.
         </p>
 
         {status?.error && !connecting && (
