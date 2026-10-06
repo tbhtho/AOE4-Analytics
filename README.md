@@ -6,20 +6,20 @@
 
 Age of Empires IV companion for scouting, an in-game overlay, and post-game stats.
 
-**[Download RTSLytics v0.6.1 for Windows](https://github.com/tbhtho/AOE4-Analytics/releases/tag/v0.6.1)** — download `RTSLytics-0.6.1-portable.exe` and run it. No installer is required. The release includes a SHA-256 checksum.
+**[Download RTSLytics v0.6.1 for Windows](https://github.com/tbhtho/AOE4-Analytics/releases/tag/v0.6.1)** - download `RTSLytics-0.6.1-portable.exe` and run it. No installer is required. The release includes a SHA-256 checksum.
 
 
 ## Screenshots
 
 <p align="center">
   <img src="docs/screenshots/overlay.png" width="720" alt="In-game overlay"><br>
-  <sub><b>In-game overlay</b> — civilizations, army units, counters, and match time</sub>
+  <sub><b>In-game overlay</b> - civilizations, army units, counters, and match time</sub>
 </p>
 
 <table>
   <tr>
-    <td width="50%"><img src="docs/screenshots/dashboard.png" width="100%" alt="Dashboard"><br><sub><b>Dashboard</b> — ranks, rating, recent form, match prep</sub></td>
-    <td width="50%"><img src="docs/screenshots/my-stats.png" width="100%" alt="My Stats"><br><sub><b>My Stats</b> — playstyle radar, performance, rating over time</sub></td>
+    <td width="50%"><img src="docs/screenshots/dashboard.png" width="100%" alt="Dashboard"><br><sub><b>Dashboard</b> - ranks, rating, recent form, match prep</sub></td>
+    <td width="50%"><img src="docs/screenshots/my-stats.png" width="100%" alt="My Stats"><br><sub><b>My Stats</b> - playstyle radar, performance, rating over time</sub></td>
   </tr>
 </table>
 
@@ -28,12 +28,12 @@ Age of Empires IV companion for scouting, an in-game overlay, and post-game stat
 
 <table>
   <tr>
-    <td width="50%"><img src="docs/screenshots/scout.png" width="100%" alt="Scout"><br><sub><b>Scout</b> — ladder leaderboard and opponent lookup</sub></td>
-    <td width="50%"><img src="docs/screenshots/civ-meta.png" width="100%" alt="Civ Meta"><br><sub><b>Civ Meta</b> — live tier list and win rates</sub></td>
+    <td width="50%"><img src="docs/screenshots/scout.png" width="100%" alt="Scout"><br><sub><b>Scout</b> - ladder leaderboard and opponent lookup</sub></td>
+    <td width="50%"><img src="docs/screenshots/civ-meta.png" width="100%" alt="Civ Meta"><br><sub><b>Civ Meta</b> - live tier list and win rates</sub></td>
   </tr>
   <tr>
-    <td width="50%"><img src="docs/screenshots/guides.png" width="100%" alt="Guides"><br><sub><b>Guides</b> — community build orders and counter helper</sub></td>
-    <td width="50%"><img src="docs/screenshots/data-studio.png" width="100%" alt="Data Studio"><br><sub><b>Data Studio</b> — filter your own match history</sub></td>
+    <td width="50%"><img src="docs/screenshots/guides.png" width="100%" alt="Guides"><br><sub><b>Guides</b> - community build orders and counter helper</sub></td>
+    <td width="50%"><img src="docs/screenshots/data-studio.png" width="100%" alt="Data Studio"><br><sub><b>Data Studio</b> - filter your own match history</sub></td>
   </tr>
 </table>
 
@@ -70,7 +70,7 @@ Local detection uses your files under `Documents\My Games\Age of Empires IV`. Ne
 
 ## License
 
-RTSLytics' own source code is licensed under the [MIT License](LICENSE). Bundled Age of Empires IV game data and civilization flag images are © Microsoft and used for non-commercial purposes under Microsoft's Game Content Usage Rules — they are not covered by MIT. See [NOTICE](NOTICE) for details.
+RTSLytics' own source code is licensed under the [MIT License](LICENSE). Bundled Age of Empires IV game data and civilization flag images are © Microsoft and used for non-commercial purposes under Microsoft's Game Content Usage Rules - they are not covered by MIT. See [NOTICE](NOTICE) for details.
 
 ## Legal
 
