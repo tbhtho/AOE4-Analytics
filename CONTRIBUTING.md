@@ -79,6 +79,37 @@ Rules of thumb:
   `preload.ts`, then the handler/controller, then the renderer hook.
 - Path aliases: `@domain`, `@api`, `@store`, `@ipc`, `@shared`, `@data`.
 
+## Maintenance checks
+
+Keep profile-scoped caches and history isolated during account switches, preserve
+team structure, and treat missing data as unavailable. Removed history rows must
+remain excluded from re-import, and SQLite and JSON fallback behavior must match.
+
+Validate renderer arguments in the main process and preserve Electron isolation,
+the production CSP, and navigation restrictions. Keep overlay placement and
+multi-monitor behavior intact; APM counting remains gated by a live match and game
+focus. Do not record raw input or broaden the documented data sources.
+
+For packaging, retain Electron native-module rebuilding, `.node`-only ASAR
+unpacking, and the `steam-appticket` dependency override. Check the production
+audit before changing dependencies. Keep credentials, real player data, generated
+output, and diagnostic captures out of commits.
+
+Use `npm run bundle` after build, preload, IPC, or entry-point changes. For an
+authorized release, use `npm run dist:verified`, inspect the executable, smoke-test
+it, and verify its SHA-256. Existing tags and releases must not be replaced just
+to rerun a build.
+
+The packaged diagnostic smoke mode uses `RTSLYTICS_SMOKE=1` and a separate temporary
+`rtslytics-diag` user-data directory. It skips live polling, Steam restoration, and
+the input hook; the directory is reused, so it is not necessarily empty. Confirm
+SQLite initialization for native-sensitive changes. This check does not establish
+real-game transparency, click-through, hotkeys, match detection, or Steam login.
+
+Build and launch manually with `npm run pack`, then
+`release\win-unpacked\RTSLytics.exe`. Close an existing RTSLytics instance yourself
+before packaging if its files are locked.
+
 ## Contributing data (no code required)
 
 - **Build orders** live in `src/data/buildOrders/` as JSON (CraftySalamander /
