@@ -36,16 +36,25 @@ AoE4 companion for scouting, an in-game overlay, and post-game stats.
 
 ## Get started
 
-Select your player profile, then use **Borderless or Windowed Fullscreen** in AoE4 for the overlay. **Alt + O** shows or hides it; **Ctrl + Alt + O** enters widget placement. Rebind both in Settings. Windows is required for the overlay and local-file features. [More controls and setup](docs/PROJECT_DETAILS.md#overlay-controls).
+Select your player profile, then use **Borderless or Windowed Fullscreen** in AoE4 for the overlay. **Alt + O** shows or hides it; **Ctrl + Alt + O** enters widget placement. Rebind both in Settings. Windows is required for the overlay and local-file features; exclusive fullscreen is not supported.
 
 ## Features
 
-- **Scout and prepare:** opponent ranks, ratings, recent form, favorite civilizations, public matches, exact personal head-to-head history, and practical team roles based on the civilization lineup.
+- **Scout and prepare:** player lookup, ladder filters by mode and country, opponent ranks, ratings, recent form, favorite civilizations, public matches, exact personal head-to-head history, and team roles based on the civilization lineup.
 - **Live overlay:** matchup bar, civ flags, ranks, key units and counters, rating-based win odds for rated ranked 1v1s, optional live APM, and a session record with net rating.
 - **Follow a plan:** pin community build orders in Guides; build-order steps and age-up pace targets for your rank follow your local game clock, including pauses. Adaptive Build Coach gives conditional in-match responses and evidence-linked post-game recovery plans.
-- **Review each game:** result card, Turning-Point Story, economy grade, APM, trends, and raw team contribution breakdowns. Benchmark Lens compares recent stretches and filtered samples with sample sizes shown for every metric.
+- **Review each game:** result card, Turning-Point Story, economy grade, APM, trends, and raw team contributions. Summary data adds sortable score, economy, technology, military, resource and score timelines, and build-order breakdowns. Benchmark Lens compares recent stretches and filtered samples with sample sizes shown for every metric.
 - **Explore your data:** Matchup Lab separates global directional data from personal results, each with sample counts. Data Studio filters by civilization, opponent civilization, map, format, patch, season, result, duration, and time window, with bookmarkable views.
-- **Learn and play:** civilization pages, tier lists, counters, build orders, landmarks, and matchup stats. Local support covers ranked, Quick Match, custom games, and vs-AI where files provide the data; written guides remain work in progress.
+- **Learn and play:** civilization pages, tier lists, Counter Helper, landmarks, maps, matchup stats, and build orders searchable by civilization, build, style, or author. Local support covers ranked, Quick Match, custom games, and vs-AI where files provide the data; written guides remain work in progress.
+
+<details>
+<summary>Overlay controls and data limits</summary>
+
+- Settings > Overlay lets you arrange or reset widgets, adjust opacity and scale, choose the APM corner, and toggle APM, troops, age-up targets, or the session tracker. Placement previews work outside a match; locked widgets are click-through. Check the focus setting if the overlay appears only on the desktop.
+- Pin a plan with Guides > Build Orders > Show in overlay. APM counts actions only during a live match with AoE4 focused, without recording key identities or text. Rating-based win odds are Elo estimates, not predictions.
+- Data Studio views can exclude AI/custom practice games and be bookmarked. Older public matches may lack patch/season metadata; local/custom games have no public patch. Metrics show observed sample sizes and personal correlations. Live economy, unit, and command telemetry is unavailable.
+
+</details>
 
 Community build orders are adapted from [AoE4Guides](https://aoe4guides.com/); the app credits original authors and links to each source.
 
@@ -53,11 +62,9 @@ Community build orders are adapted from [AoE4Guides](https://aoe4guides.com/); t
 
 RTSLytics reads your own AoE4 logs, history, and replay headers under `Documents\My Games\Age of Empires IV`, alongside public data from AoE4World and Relic. It does not modify the game.
 
-Optional Steam sign-in retrieves your own ranked economy and age-up summaries from Relic and its summary host. QR approval is recommended. Password sign-in sends your password only to Steam for that login and does not store it; saved session tokens use OS encryption. [Connection details and data limits](docs/PROJECT_DETAILS.md#data-and-optional-steam-connection).
+Optional Steam sign-in retrieves your own ranked economy and age-up summaries from Relic and its summary host. QR approval is recommended. Password sign-in sends your password only to Steam for that login and does not store it; saved session tokens use OS encryption, or stay session-only when encryption is unavailable.
 
-## Documentation
-
-[Feature guide and controls](docs/PROJECT_DETAILS.md) · [Development and contribution](CONTRIBUTING.md) · [Third-party notices](NOTICE)
+[Contributing](CONTRIBUTING.md) · [Release history](CHANGELOG.md) · [Third-party notices](NOTICE)
 
 ## License and credits
 
