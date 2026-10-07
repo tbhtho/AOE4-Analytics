@@ -1,139 +1,61 @@
-Historical source notes preserved during the 2026-10-06 presentation update. Download links and acceptance claims below describe the earlier source context; use the [current README](../README.md) for this repository's distribution status.
+# RTSLytics feature guide
 
-# RTSLytics
+See the [README](../README.md) for the Windows download and all seven screenshots. Development setup, build commands, and the architecture map are in [CONTRIBUTING.md](../CONTRIBUTING.md).
 
-[![CI](https://github.com/m4rc3lsowhat/AOE4-Analytics/actions/workflows/ci.yml/badge.svg)](https://github.com/m4rc3lsowhat/AOE4-Analytics/actions/workflows/ci.yml)
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](../LICENSE)
-![Platform: Windows](https://img.shields.io/badge/platform-Windows-blue.svg)
+## Scouting and preparation
 
-Age of Empires IV companion for scouting, overlay help, and post-game stats.
+- Look up opponents by player name and browse the ladder by game mode and country.
+- Check rank, rating, recent form, favorite civilizations, recent public matches, and exact personal head-to-head history.
+- Prepare team roles and priorities from the public civilization lineup.
 
-RTSLytics is read-only. It uses public APIs and your own local AoE4 files.
+## Overlay controls
 
-## Features
+Use Borderless or Windowed Fullscreen in AoE4. Exclusive fullscreen is not supported. The overlay appears when a live match is detected.
 
-- Pre-game scouting: opponent rank, rating, recent form, favorite civs, recent public matches, and exact personal head-to-head history.
-- Team plans: practical roles and priorities based on the public civilization lineup.
-- In-game overlay: top matchup bar, civ flags, ranks, key units, counters, win odds by rating, and optional live APM.
-- Adaptive Build Coach: conditional responses during a match and evidence-linked recovery plans after it.
-- Session tracker: today's record at a glance ("3W – 1L +42") on the overlay, so a losing streak is visible without leaving the game.
-- Live match clock widgets: a step-by-step build-order guide (pin any build from Guides) and age-up pace targets for your rank, driven by the real game clock (your own log file, pauses included).
-- Post-game review: result card, Turning-Point Story, economy grade, APM, trends, and raw team contribution breakdowns.
-- Benchmark Lens: compare recent stretches and filtered personal samples with the sample size shown for every metric.
-- Matchup Lab: global directional matchup data and personal local results, kept separate with honest sample counts.
-- Data Studio: filter local history by civ, opponent, map, format, patch or season, result, duration, and time window; filtered views can be bookmarked.
-- Guides and data: civ pages, tier lists, counters, build orders, landmarks, and matchup stats. Written guides are marked work in progress while they are updated.
-- Local support: ranked, Quick Match, custom games, and vs-AI where local files provide the data.
+| Control                                 | Action                                                                        |
+| --------------------------------------- | ----------------------------------------------------------------------------- |
+| Alt + O                                 | Show or hide the overlay                                                      |
+| Ctrl + Alt + O                          | Enter or leave widget placement                                               |
+| Settings > Overlay                      | Rebind hotkeys, arrange widgets, reset positions, and adjust opacity or scale |
+| Guides > Build Orders > Show in overlay | Pin a build order to the overlay                                              |
 
-Many bundled build orders are adapted from community submissions on [AoE4Guides](https://aoe4guides.com/). Sourced builds credit their original authors and link back to the source in the app.
+Placement mode shows placeholders even outside a match so you can drag each widget into position; locked widgets are click-through. Settings also controls the APM counter, its corner, the matchup troops panel, age-up targets, and session tracker. If the overlay appears on the desktop but not over AoE4, check the **Only show overlay while AoE4 is focused** setting.
 
-## Screenshots
+- **Matchup bar:** both teams' civilizations, flags, ranks, ratings, key units, and counters. Win odds are an Elo estimate for ranked 1v1s with two rated players, labeled "by rating".
+- **Live APM:** counts key presses and mouse clicks only while a match is live and AoE4 is focused. It records counts, not key identities or text; disable it in Settings if you prefer.
+- **Session tracker:** today's wins, losses, and net rating change during a match and in the post-game view.
+- **Build-order and age-up widgets:** pinned build steps and rank-based Feudal, Castle, and Imperial pace targets follow the local game clock, including pauses.
+- **Adaptive Build Coach:** conditional in-match responses and evidence-linked recovery plans after a match.
 
-<p align="center">
-  <img src="../docs/screenshots/overlay.png" width="720" alt="In-game overlay"><br>
-  <sub><b>In-game overlay</b> — your build order vs theirs, hard-counters ringed</sub>
-</p>
+## Post-game review
 
-<table>
-  <tr>
-    <td width="50%"><img src="../docs/screenshots/dashboard.png" width="100%" alt="Dashboard"><br><sub><b>Dashboard</b> — ranks, rating, recent form, match prep</sub></td>
-    <td width="50%"><img src="../docs/screenshots/my-stats.png" width="100%" alt="My Stats"><br><sub><b>My Stats</b> — playstyle radar, performance, rating over time</sub></td>
-  </tr>
-  <tr>
-    <td width="50%"><img src="../docs/screenshots/scout.png" width="100%" alt="Scout"><br><sub><b>Scout</b> — ladder leaderboard and opponent lookup</sub></td>
-    <td width="50%"><img src="../docs/screenshots/civ-meta.png" width="100%" alt="Civ Meta"><br><sub><b>Civ Meta</b> — live tier list and win rates</sub></td>
-  </tr>
-  <tr>
-    <td width="50%"><img src="../docs/screenshots/guides.png" width="100%" alt="Guides"><br><sub><b>Guides</b> — community build orders and counter helper</sub></td>
-    <td width="50%"><img src="../docs/screenshots/data-studio.png" width="100%" alt="Data Studio"><br><sub><b>Data Studio</b> — filter your own match history</sub></td>
-  </tr>
-</table>
+- Result cards, Turning-Point Story, economy grade, APM, recent trends, and raw team contribution breakdowns.
+- Sortable score, economy, technology, military, resource-over-time, score-over-time, and build-order breakdowns when summary data is available.
+- **Benchmark Lens:** compare recent stretches and filtered personal samples; every metric displays the number of observed games.
+- **Matchup Lab:** explore global directional matchup data and personal local results separately, with sample counts.
 
-## Download
+## Data Studio
 
-Use the latest portable Windows release:
+Filter personal match history by civilization, opponent civilization, map, format, patch, season, result, duration, and recent time window. Filters are stored in the page address so views can be bookmarked. You can exclude AI and custom practice games.
 
-https://github.com/m4rc3lsowhat/AOE4-Analytics/releases/latest
+Metrics show the sample with recorded values. Older public matches may lack patch or season metadata, and local/custom matches cannot be assigned a public patch. Filters describe correlation in your own matches, not patch causality or global performance.
 
-Download `RTSLytics-*-portable.exe` and run it. No installer is required.
+## Civilizations, guides, and local modes
 
-## Requirements
+- Civilization pages, live tier lists, counters, build orders, landmarks, matchup stats, and maps from AoE4World.
+- Search build orders by civilization, build, style, or author and use the Counter Helper. Written guides remain work in progress.
+- Ranked, Quick Match, custom games, and vs-AI are supported where local files provide the data.
 
-- Windows for the full overlay and local-file features.
-- Node.js 22 (see [`.nvmrc`](../.nvmrc)) and npm for development.
+Many bundled builds are adapted from [AoE4Guides](https://aoe4guides.com/). Sourced builds credit their original authors and link back to the source in the app.
 
-## Development
+## Data and optional Steam connection
 
-```bash
-npm install
-npm run dev
-```
+Local match detection and review read logs, session data, match history, and replay headers under `Documents\My Games\Age of Empires IV`. Public scouting and match data come from Relic's community API; search, ladder, tier, matchup, and map data also use AoE4World. Bundled AoE4World game data and flags are covered by the [third-party notices](../NOTICE).
 
-Useful commands:
+Connecting Steam is optional. It lets RTSLytics retrieve your own ranked post-game summaries, including exact economy and age-up timings, from Relic and its summary host. QR approval is recommended; password sign-in sends your password only to Steam for that login and never stores it. Saved session tokens are encrypted through the operating system. If OS encryption is unavailable, the token is kept only for the current session.
 
-```bash
-npm run typecheck
-npm run lint
-npm test
-npm run verify
-npm run pack
-npm run dist
-```
+RTSLytics reads your own game files and the documented services. It does not read game memory, inject into the game, or modify game files. Live economy, unit, and command telemetry is not available; detailed coaching uses public data and local post-game information.
 
-`npm run dist` builds the portable `.exe` in `release/`.
+The portable release is for Windows. Overlay, local-file features, and the APM input hook require Windows; the API-backed dashboard, scout, civilization data, and guides can run from source on other platforms.
 
-## Overlay
-
-Run AoE4 in Borderless or Windowed Fullscreen. The overlay appears when RTSLytics detects a live match.
-
-Hotkeys (defaults — rebindable in Settings → Overlay):
-
-```text
-Alt + O           show / hide overlay
-Ctrl + Alt + O    move overlay widgets (placement mode)
-```
-
-## Local Data
-
-On Windows, RTSLytics reads files under:
-
-```text
-Documents\My Games\Age of Empires IV
-```
-
-Used files include logs, session data, match history, and replay headers. This data stays on your machine. RTSLytics makes network requests only to AoE4World, the Relic community API, and — if you connect Steam — Steam and its stat-summary blob host. See [Privacy & security](#privacy--security).
-
-## Data Sources
-
-- Relic community API for scouting and match data.
-- AoE4World API for search, ladder data, tier lists, matchups, and maps.
-- Vendored AoE4World data and flags.
-- Local AoE4 files for live detection and post-game stats.
-
-## Steam sign-in (optional)
-
-Connecting Steam is optional and only used to download your own ranked post-game stat summaries (exact economy, age-up timings) from Relic. QR approval is the recommended method. If you use password sign-in, your password is sent only to Steam for that one login and is never stored; the saved session token is encrypted with your OS keychain.
-
-## Privacy & security
-
-RTSLytics is read-only and keeps your game data on your machine.
-
-## Architecture
-
-RTSLytics has one Electron **main** process (`electron/`) that owns all IO and the API clients, a typed **preload** bridge (`electron/ipc/contract.ts`), and two React renderer windows — the dashboard (`src/renderer/main/`) and the transparent overlay (`src/renderer/overlay/`). The real logic lives in a pure, Vitest-tested domain layer (`src/domain/`); renderers only talk to the main process through IPC. See [CONTRIBUTING.md](../CONTRIBUTING.md) for the full map.
-
-## Contributing
-
-Contributions are welcome — code, build orders, and guides. Please read [CONTRIBUTING.md](../CONTRIBUTING.md) first (especially the read-only rule), and run `npm run verify` before opening a PR.
-
-## Docs
-
-- [CONTRIBUTING.md](../CONTRIBUTING.md) — build instructions, the architecture map, and how to contribute
-
-## License
-
-RTSLytics' own source code is licensed under the [MIT License](../LICENSE). Bundled Age of Empires IV game data and civilization flag images are © Microsoft and used for non-commercial purposes under Microsoft's Game Content Usage Rules — they are not covered by MIT. See [NOTICE](../NOTICE) for details.
-
-## Legal
-
-RTSLytics is not affiliated with Microsoft, Relic Entertainment, or World's Edge. Age of Empires IV and related assets belong to Microsoft and are used under Microsoft's Game Content Usage Rules.
+The source uses the [MIT License](../LICENSE). Microsoft game data and image assets retain their separate non-commercial terms in [NOTICE](../NOTICE).
